@@ -12,7 +12,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def home() :
     csvData = pd.read_csv("tmdb.csv",low_memory=False)
     csvData.sort_values(["vote_average"], 
