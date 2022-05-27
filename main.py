@@ -7,7 +7,6 @@ import movies
 import csv  
 import pandas as pd
 import string
-import json
 
 app = Flask(__name__)
 
