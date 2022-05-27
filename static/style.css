@@ -373,7 +373,6 @@ span {
   padding: 0.5rem 0rem;
 }
 
-<<<<<<< HEAD
 .about-section .details p {
   color: whitesmoke;
   margin-top: 1rem;
@@ -423,13 +422,3 @@ span {
   font-size: large;
 }
 /*# sourceMappingURL=style.css.map */
-=======
-.about-section p {
-  color: brown;
-  margin-top: 1rem;
-  font-size: large;
-  text-align: center;
-  background-color: beige;
-}
-/*# sourceMappingURL=style.css.map */
->>>>>>> fff637ed1e42db6bc8b9a775196e9a62fd6790a3
