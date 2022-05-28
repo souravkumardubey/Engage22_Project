@@ -12,14 +12,31 @@
 </head>
 <body style="background-color: #110f16;">
 
+    <!-- Navigation bar -->
     <header>
+        <!-- url_for() creates a route of html page provided inside its paranthesis. -->
         <a href={{url_for('home')}}><h1 class="logo">Movie<span class="logo-part">&Chill</span></h1></a>
         <nav>
             <ul class="nav-links">
-                <li><a href="/about">About</a></li>
+                <li><a href="about">About</a></li>
             </ul>
         </nav>
     </header>
+
+    <!-- Search box -->
+    <section class="search-area">
+        <form action=""></form>
+        <form action="{{url_for('search')}}" method="post" class="search-box">
+            <!-- <form action=""> -->
+                <input type="text" name="m_name" id="search" placeholder="Search for a movie">
+                <div class="search-icon">
+                    <span class="material-symbols-outlined">search</span>
+                </div>
+            <!-- </form> -->
+        </form>  
+    </section>
+
+    <!-- Movie details -->
 
     {% for movie in result %}
         <section class="movie-details">
@@ -31,10 +48,12 @@
                 <h3 class="release-date"><span>Release : </span>{{movie['year']}}</h3>
                 <h3 class="movie-rating"><span>Rating : </span>{{movie['rating']}}</h3>
                 <h3 class="movie-overview"><span>Overview : </span>{{movie['overview']}}</h3>
+                <h3 class="movie-overview"><span>Cast : </span>{{movie['cast']}}</h3>
             </div>
         </section>
     {% endfor %}
     
+    <!-- Movie recommendations -->
 
     <section class="result-movie">
         <h3 class="search-results">Recommendations</h3>
@@ -51,6 +70,5 @@
         </div>
     </section>
 
-    <script src="./main.js"></script>
 </body>
 </html>

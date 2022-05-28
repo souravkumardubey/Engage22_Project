@@ -12,7 +12,9 @@
 </head>
 <body style="background-color: #110f16;">
 
+    <!-- Navigation bar -->
     <header>
+        <!-- url_for() creates a route of html page provided inside its paranthesis. -->
         <a href={{url_for('home')}}><h1 class="logo">Movie<span class="logo-part">&Chill</span></h1></a>
         <nav>
             <ul class="nav-links">
@@ -21,6 +23,7 @@
         </nav>
     </header>
 
+    <!-- Search box -->
     <section class="search-area">
         <form action=""></form>
         <form action="{{url_for('search')}}" method="post" class="search-box">
@@ -32,6 +35,8 @@
             <!-- </form> -->
         </form>  
     </section>
+
+    <!-- Presenting top rated movies -->
 
     <section class="result-movie">
         <!-- <h1 class="default"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> Search to get results</h1> -->
@@ -49,6 +54,7 @@
         </div>
     </section>
 
+    <!-- Presenting the trending movies -->
     <section class="result-movie">
         <!-- <h1 class="default"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> Search to get results</h1> -->
         <h3 class="search-results">Trending Now</h3>
@@ -65,7 +71,5 @@
         </div>
     </section>
 
-
-    <script src="./main.js"></script>
 </body>
 </html>

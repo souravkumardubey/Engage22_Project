@@ -1,4 +1,4 @@
-from crypt import methods
+
 from distutils.log import debug
 from pydoc import render_doc
 import string
@@ -72,7 +72,7 @@ def movie(m_id) :
                 movie['title'] = row[18]
                 movie['year'] = row[12]
                 movie['overview'] = row[8]
-
+                movie['cast'] = row[3]
                 result.append(movie)
                 final_title = movie['title']
                 recommendations = movies.get_recommendations_on_genres(final_title)

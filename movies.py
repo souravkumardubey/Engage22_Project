@@ -1,4 +1,4 @@
-
+# importing libraries rquired to build the project
 import pandas as pd
 import flask
 import json
@@ -7,31 +7,25 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-# In[2]:
-
-
-
 app = flask.Flask(__name__, template_folder='templates')
 
-
-# In[10]:
-
-
+# reading the csv data file using pandas and making a dataframe out of it
 df2 = pd.read_csv('tmdb.csv',low_memory = False)
 
-
+# Machines cannot understand characters and words. So when dealing with text data we need to represent 
+# it in numbers to be understood by the machine. Countvectorizer is a method to convert text to numerical data.
 count = CountVectorizer(stop_words='english')
-count_matrix = count.fit_transform(df2['title'])
+
+# .fit_transform() is used in Unsupervised Learning having one object/parameter(x), where we don't know, what we are going to predict.
+count_matrix = count.fit_transform(df2['title'],df2['genres'])
 
 count2 = CountVectorizer(stop_words='english')
-count_matrix2 = count2.fit_transform(df2['genres'])
+count_matrix2 = count2.fit_transform(df2['genres'],df2['title'])
 
+# Cosine similarity is a metric used to measure how similar the documents are irrespective of their size.
 cosine_sim2 = cosine_similarity(count_matrix2, count_matrix2)
 
 indices = pd.Series(df2.index, index=df2['title'])
-#indices = pd.Series(i.lower() for i in df2['title'])
-#indices = indices.str.lower()
-# print(indices)
 
 def isSubSequence(str1, str2):
     m = len(str1)
@@ -42,7 +36,6 @@ def isSubSequence(str1, str2):
  
     while j < m and i < n:
         if str1[j] == str2[i]:
-#             print(str1[j],end=' ')
             j = j+1
         i = i + 1
  
@@ -56,7 +49,11 @@ def get_title(m_name) :
 
     all_titles = [df2['title'][i] for i in range(len(df2['title']))]
     flag = 0
+    new_name = m_name.title()
     
+    if ( new_name in all_titles ) :
+        return new_name , 1
+
     if m_name not in all_titles:
         search_words = m_name.lower()
         to_be_searched = search_words.split()
@@ -79,17 +76,14 @@ def get_title(m_name) :
                             print(titles)
                             prev = length
 
-#     print(m_name)
     return m_name , flag
-    
+
 def get_recommendations_on_title(title):
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
-    #print(cosine_sim)
-    #print(indices[title])
     idx = indices[title]
     sim_scores = list(enumerate(cosine_sim[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-    sim_scores = sim_scores[0:11]
+    sim_scores = sim_scores[0:20]
     movie_indices = [i[0] for i in sim_scores]
     ids = df2['id'].iloc[movie_indices]
     tit = df2['title'].iloc[movie_indices]
@@ -109,12 +103,11 @@ def get_recommendations_on_title(title):
 
 def get_recommendations_on_genres(title):
     cosine_sim2 = cosine_similarity(count_matrix2, count_matrix2)
-    #print(cosine_sim)
-    #print(indices[title])
+
     idx = indices[title]
     sim_scores = list(enumerate(cosine_sim2[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-    sim_scores = sim_scores[0:11]
+    sim_scores = sim_scores[0:20]
     movie_indices = [i[0] for i in sim_scores]
     ids = df2['id'].iloc[movie_indices]
     tit = df2['title'].iloc[movie_indices]
