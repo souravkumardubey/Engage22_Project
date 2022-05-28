@@ -33,41 +33,55 @@ indices = pd.Series(df2.index, index=df2['title'])
 #indices = indices.str.lower()
 # print(indices)
 
+def isSubSequence(str1, str2):
+    m = len(str1)
+    n = len(str2)
+ 
+    j = 0  
+    i = 0  
+ 
+    while j < m and i < n:
+        if str1[j] == str2[i]:
+#             print(str1[j],end=' ')
+            j = j+1
+        i = i + 1
+ 
+    if j >= ( m // 2 ) :
+        return True , j
+    else :
+        return False , 0
+
+
 def get_title(m_name) :
 
     all_titles = [df2['title'][i] for i in range(len(df2['title']))]
-    m_name = m_name.lower()
     flag = 0
     
     if m_name not in all_titles:
-        search_words = m_name.split()
-        to_be_searched = m_name.lower()
+        search_words = m_name.lower()
+        to_be_searched = search_words.split()
         prev = 0
         
         for titles in all_titles :
-            new_title = titles.replace('-','')
-            new_title2 = new_title.replace(':','')
-            to_search_in = new_title2.lower()
+            to_search_in = titles.lower()
             movie_words = to_search_in.split()
             c = 0
-            for i in search_words :
-                if i in movie_words :
-                    #print(i)
-                    
-                    c = c + 1
-            if ( c == len(to_be_searched) ) :
+            for str1 in to_be_searched :
+                most_suitable = ""
+                prev = 0
+                for str2 in movie_words :
+                    isSub , length = isSubSequence( str1 , str2 )
+                    if isSub :
+                        if ( (len(str2) == length and len(str1) == length) or len(str1) == length ) :
+                            return titles , 1
+                        if length > prev :
+                            m_name = titles
+                            print(titles)
+                            prev = length
 
-                flag = 1
-                m_name = titles
-                print(titles)
-                break
-            if ( c > prev ) :
-                prev = c
-                flag = 1
-                m_name = titles;
-    print(m_name)
+#     print(m_name)
     return m_name , flag
-
+    
 def get_recommendations_on_title(title):
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
     #print(cosine_sim)

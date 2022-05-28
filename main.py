@@ -10,13 +10,14 @@ import string
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['POST','GET'])
 def home() :
     csvData = pd.read_csv("tmdb.csv",low_memory=False)
     csvData.sort_values(["vote_average"], 
                     axis=0,
                     ascending=[False], 
                     inplace=True)
+
 
     top_10 = list()
     i = 0
@@ -49,7 +50,7 @@ def search() :
         else :
             return render_template("error.html");
 
-@app.route("/about",methods=['GET'])
+@app.route("/about",methods=['POST','GET'])
 def about() :
     return render_template("about.html");
 
@@ -57,10 +58,8 @@ def about() :
 @app.route('/movies/<int:m_id>',methods=['GET']) 
 def movie(m_id) :
     result = list()
-    print(m_id)
-    print("hellow")
+
     input = "tmdb.csv"
-    print(type(m_id))
 
     with open(input) as file_obj :
         render_obj = csv.reader(file_obj)
