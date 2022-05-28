@@ -72,12 +72,12 @@ def movie(m_id) :
                 movie['title'] = row[18]
                 movie['year'] = row[12]
                 movie['overview'] = row[8]
-                movie['cast'] = row[3]
+                movie['casts'] = row[2].title()
                 result.append(movie)
                 final_title = movie['title']
                 recommendations = movies.get_recommendations_on_genres(final_title)
                 movies_results = movies.get_results(recommendations)
-                return render_template('movie.html',result=result , movies_results = movies_results)
+                return render_template('movie.html',result=result , movies_results = movies_results )
        
     
 

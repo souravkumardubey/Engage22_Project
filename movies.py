@@ -83,7 +83,7 @@ def get_recommendations_on_title(title):
     idx = indices[title]
     sim_scores = list(enumerate(cosine_sim[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-    sim_scores = sim_scores[0:20]
+    sim_scores = sim_scores[0:24]
     movie_indices = [i[0] for i in sim_scores]
     ids = df2['id'].iloc[movie_indices]
     tit = df2['title'].iloc[movie_indices]
@@ -107,7 +107,7 @@ def get_recommendations_on_genres(title):
     idx = indices[title]
     sim_scores = list(enumerate(cosine_sim2[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-    sim_scores = sim_scores[0:20]
+    sim_scores = sim_scores[0:24]
     movie_indices = [i[0] for i in sim_scores]
     ids = df2['id'].iloc[movie_indices]
     tit = df2['title'].iloc[movie_indices]
