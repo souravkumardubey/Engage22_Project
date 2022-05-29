@@ -33,27 +33,29 @@
 - #### Movie info page
     -  Clicking on the poster of a movie , the user is redirected to a page where he will be given a brief about that particular movie, such as the release date, its rating, and overview of the movie.
     -  Along wiht the movie details, the user is also recommended with some movies which he might also like to watch.
+- #### Responsiveness
+  - The website is completely responsive on all the devices such as on phone, tab, and desktop.
 
-- #### Implementation Details
-    - ##### Tech Stacks Used
-      - HTML
-      - CSS
-      - Python
-      - Flask
-      - For processing the data from the tmdb.csv file , Machine Learning library SkLearn has been implemented. It is completely based on <span style = "font-weight: bold;">Item Based Collaborative Filtering Algorithm</span>.
-    - ##### Clone Repo and run on your local host
-      - Clone or download this repository in your local machine
-        <br>
-        > git clone url_of_the_repo
-      - Select your python interpreter, if there isn't one, then install python and then select interpreter.
-      - Install libraries from requirements.txt using
-        <br>
-        > pip install -r requirements.txt
-      - Open terminal or command prompt and type
-        <br>
-        > python main.py
-      - Go to browser and type
-        <br>
-        > http://127.0.0.1:5000
+## Implementation Details
+  - ##### Tech Stacks Used
+    - HTML
+    - CSS
+    - Python
+    - Flask
+    - For processing the data from the tmdb.csv file , Machine Learning library SkLearn has been implemented. It is completely based on <span style = "font-weight: bold;">Item Based Collaborative Filtering Algorithm</span>.
+  - ##### Clone Repo and run on your local host
+    - Clone or download this repository in your local machine
+      <br>
+      > git clone url_of_the_repo
+    - Select your python interpreter, if there isn't one, then install python and then select interpreter.
+    - Install libraries from requirements.txt using
+      <br>
+      > pip install -r requirements.txt
+    - Open terminal or command prompt and type
+      <br>
+      > python main.py
+    - Go to browser and type
+      <br>
+      > http://127.0.0.1:5000
 
 ## 
