@@ -21,7 +21,7 @@
 ## HOSTING THE APP ON LOCALHOST
   - Clone or download this repository in your local machine
     <br>
-    > git clone url_of_the_repo
+    > git clone https://github.com/souravkumardubey/Engage22_Project.git
   - Select your python interpreter, if there isn't one, then install python and then select interpreter.
   - Install libraries from requirements.txt using
     <br>
