@@ -2,9 +2,12 @@
 # <p align="center"> Movie Recommendation Web App </p>
 > Confused what to watch after finishing a movie? Do not worry Movie&Chill is here.
 
-> Live project https://movieandchill.herokuapp.com 
-> Dataset used https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata
-> Github Repo https://github.com/souravkumardubey/Engage22_Project
+> [Live project](https://movieandchill.herokuapp.com)
+
+> [Dataset used](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata)
+
+> [Github Repo](https://github.com/souravkumardubey/Engage22_Project)
+
 > [Project Demo](https://youtu.be/v6cmuAiuaNg)
 
 ### TABLE OF CONTENTS 📙
